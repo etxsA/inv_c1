@@ -1,0 +1,33 @@
+ <head>
+    <link href="/css/sign.css" rel="stylesheet">
+ </head>
+ 
+ <div class="signWrap shadow">   
+    <form class="form-signin" action="/app/signin" method="post">
+    <div class="text-center mb-4">
+        <img class="mb-4" src="/img/logo.png" alt="" width="128" height="128">
+        <h1 class="h3 mb-3 font-weight-normal"> <i class="fa-solid fa-seedling fa-lg"></i>Inicio a Invernaderos<i class="fa-solid fa-tree fa-lg"></i>
+        <br>CECYT 1</h1>
+        <p>Ingresa tus datos para iniciar sesión</p>
+    </div>
+
+    <div class="form-label-group">
+        <input type="email" id="inputEmail" name="email" class="form-control" placeholder="Correo Electrónico" required>
+        <label for="inputEmail"><i class="fas fa-envelope icon"></i> Correo Electrónico</label>
+    </div>
+
+    <div class="form-label-group">
+        <input type="password" id="inputPassword" name="password" class="form-control" placeholder="Contraseña" required>
+        <label for="inputPassword"><i class="fas fa-key icon"></i> Contraseña</label>
+    </div>
+
+    <button class="btn btn-lg btn-success btn-block" type="submit">
+        <i class="fa-solid fa-sun-plant-wilt">
+        </i>    Iniciar Sesión</button>
+
+    <div class="text-center mt-4 mb-0 p-0">
+        <p>¿No tienes una cuenta? <a class="badge badge-dark" href="/app/signup">Registrate</a></p>
+    </div>
+    <p class="mt-1 mb-0 text-muted text-center">&copy; CECyT 1 5IM52 2022</p>
+    </form>
+</div>
