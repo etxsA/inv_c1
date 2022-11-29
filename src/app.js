@@ -1,13 +1,33 @@
 import express from "express";
+import exphbs from "express-handlebars";
+
 import morgan from "morgan";
 
+import path from "path";
+import { fileURLToPath } from "url";
+
 import apiRoutes from './routes/data.routes.js';
+import appRoutes from './routes/app.routes.js';
 
 // Initializations
 const app = express();
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
 
 // Settings
 app.set('json spaces', 2);
+app.set('views', path.join(__dirname, 'views'));
+
+// Render Engine
+app.engine('.hbs', exphbs.engine({
+    defaultLayout: 'main',
+    layoutsDir: path.join(app.get('views'), 'layouts'),
+    partialsDir: path.join(app.get('views'), 'partials'),
+    extname: '.hbs',
+    helpers: './libs/handlebars.js'
+}));
+app.set('view engine', '.hbs');
+
+
 
 // Middlewares
 app.use(morgan('dev'));
@@ -21,18 +41,21 @@ app.use((err, req, res, next) => {
 });
 
 // Global Variables
+app.use((req, res, next) => {
+    app.locals.user = req.user;
+    next()
+});
 
 // Public
+app.use(express.static(path.join(__dirname, 'public')));
 
 // Routes
-app.use('/api', apiRoutes);
+app.use('/api', apiRoutes); // API
+app.use('/app', appRoutes);
 
-
-// Not Defined routes
-app.use((req, res, next) => {
-    res.status(404).json({
-        message: "Endpoint not found"
-    })
+// Default Route
+app.use("*", (req, res) => {
+    res.status(404).json({message: "Not Found"});
 });
 
 

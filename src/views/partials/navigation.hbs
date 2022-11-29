@@ -1,0 +1,43 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="/app">
+      <img src="/img/logo.png" alt="Logo Cecyt" class="mx-auto rounded-circle w-25">
+      <i class="fa-solid fa-seedling fa-lg"></i><i class="fa-solid fa-sun-plant-wilt fa-lg"></i><i class="fa-solid fa-tree fa-lg"></i> 
+      <h1 id="navTitle"> Invernaderos CECYT 1</h1> 
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav"
+      aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        {{#if user}}
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown"
+            aria-haspopup="true" aria-expanded="false">
+          Links
+          </a>
+          <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+            <a class="dropdown-item" href="/links">All Links</a>
+            <div class="dropdown-divider"></div>
+            <a class="dropdown-item" href="/links/add">Add A Link</a>
+          </div>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/profile">Profile</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/logout">Logout</a>
+        </li>
+        {{else}}
+        <li class="nav-item">
+          <a class="nav-link" href="/app/signin"> <i class="fa-regular fa-user"></i> Incia Sesion</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/app/signup"><i class="fa-regular fa-address-card"></i> Registrate</a>
+        </li>
+        {{/if}}
+      </ul>
+    </div>
+  </div>
+</nav>

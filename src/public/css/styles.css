@@ -1,0 +1,116 @@
+body {
+    background: #f5f6f5;
+    font-family: 'Montserrat', sans-serif;
+    overflow: auto;
+    overflow-x: hidden;
+}
+
+.hourglass{
+    color: black;
+    position: absolute;
+    top: 20%;
+    left: 10%;
+    width: 300px;
+    height: 540px;
+    background: none;
+    -webkit-transform: rotate(30deg);
+    transform: rotate(30deg);
+  
+}
+
+.calendar {
+    color: black;
+    position: absolute;
+    top: 20%;
+    right: 10%;
+    width: 300px;
+    height: 540px;
+    background: none;
+    -webkit-transform: rotate(330deg);
+    transform: rotate(330deg);
+}
+
+
+
+.index {
+    width: 100vw;
+    height: 100vh;
+}
+
+
+
+.masthead {
+    color: rgb(255, 255, 255);
+    min-height: 30rem;
+    width: 100%;
+    height: 100%;
+    padding-top: 8rem;
+    background: url(/img/background.jpg);
+    background-repeat: no-repeat;
+    background-position: center, center;
+    background-size: cover;
+}
+
+.masthead h1 {
+    font-size: 5rem;
+    margin: 0;
+    padding: 0;
+}
+
+.inv {
+    height: auto;
+    width: 50%;
+
+
+}
+
+#navTitle {
+    font-size: 1.2rem;
+    margin: 0;
+    padding: 0;
+
+
+}
+
+.subtitle {
+    font-weight: normal;
+    font-size: 1.2rem;
+}
+
+
+/* SVG BOTTOM INDEX PAGE */
+#motorSVG, #waterSVG, #wifiSVG, #gSVG {
+    height: auto;
+    width: 25%;
+    margin: 0;
+    padding: 0;
+}
+
+#wifiSVG {
+    margin: 10% 10% 0 0;
+}
+
+#gSVG {
+    width: 30%;
+   margin: 10% 0 0 10%;
+}
+
+
+  
+.flex-equal > * {
+    -ms-flex: 1;
+    flex: 1;
+  }
+
+  @media (min-width: 990px) {
+    .masthead h1 {
+        font-size: 5.5rem;
+    }
+
+    .flex-md-equal > * {
+      -ms-flex: 1;
+      flex: 1;
+    }
+  }
+  
+  .overflow-hidden { overflow: hidden; }
