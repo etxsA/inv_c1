@@ -95,6 +95,27 @@ body {
    margin: 10% 0 0 10%;
 }
 
+/* custom scrollbar */
+::-webkit-scrollbar {
+    width: 1.7rem;
+  }
+  
+  ::-webkit-scrollbar-track {
+    background-color: transparent;
+  }
+  
+  ::-webkit-scrollbar-thumb {
+    background-color: #30b0df;
+    border-radius: 20px;
+    border: 6px solid transparent;
+    background-clip: content-box;
+  }
+  
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: #30b0df98;
+  }
+
+
 
   
 .flex-equal > * {

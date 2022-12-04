@@ -33,3 +33,19 @@ INSERT INTO invs_data VALUES
     (2, 7.4, 3.5, 2, 3.5, "inv1", 1, DEFAULT),
     (3, 8.4, 2.5, 32, 2.5, "inv1", 1, DEFAULT),
     (4, 9.4, 1.5, 24, 1.5, "inv1", 1, DEFAULT);
+
+
+-- Comandos Utiles
+
+ SELECT DAY(measured_at) as DAY, AVG(temp) as Avg_temp, MONTH(ANY_VALUE(measured_at)) FROM invs_data GROUP BY Week;
+-- await pool.query('SELECT * FROM invs_data WHERE user_id = ? && inv = ? && measured_at >= NOW() - INTERVAL 1 DAY', [1, 'inv1'])
+
+SELECT * FROM invs_data WHERE user_id = ? && inv = ? && measured_at >= NOW() - INTERVAL 1 DAY
+
+SELECT WEEK(measured_at) as Week, AVG(temp) as temp, AVG(hum) as hum, AVG(lum) as lum, AVG(pH) as pH, ANY_VALUE(inv) as inv FROM invs_data WHERE user_id = 1 AND inv = 'inv1' AND measured_at >= NOW() - INTERVAL 1 WEEK GROUP BY Week;
+
+-- EN uso SEmana
+-- SELECT WEEK(measured_at) as Week, AVG(temp) as temp, AVG(hum) as hum, AVG(lum) as lum, AVG(pH) as pH, ANY_VALUE(inv) as inv, MAX(measured_at) as measured_at FROM invs_data WHERE user_id = ? AND inv = ? AND measured_at >= NOW() - INTERVAL 1 WEEK GROUP BY Week;
+
+
+SELECT DAY(measured_at) as day, CONCAT(DAY(MAX(measured_at)),"/",MONTH(MAX(measured_at))) as Date, AVG(temp) as temp, AVG(hum) as hum, AVG(lum) as lum, AVG(pH) as pH, ANY_VALUE(inv) as inv, MAX(measured_at) as measured_at FROM invs_data WHERE user_id =? AND inv = ? AND measured_at >= NOW() - INTERVAL 7 DAY GROUP BY day

@@ -8,6 +8,7 @@ import { fileURLToPath } from "url";
 
 import apiRoutes from './routes/data.routes.js';
 import appRoutes from './routes/app.routes.js';
+import helpers from "./libs/handlebars.js";
 
 // Initializations
 const app = express();
@@ -23,7 +24,7 @@ app.engine('.hbs', exphbs.engine({
     layoutsDir: path.join(app.get('views'), 'layouts'),
     partialsDir: path.join(app.get('views'), 'partials'),
     extname: '.hbs',
-    helpers: './libs/handlebars.js'
+    helpers: helpers
 }));
 app.set('view engine', '.hbs');
 
