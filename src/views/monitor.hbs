@@ -76,18 +76,30 @@
       </div>
     </nav>
 
+
     <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-        <h1 class="h2">Dashboard</h1>
+        <h1 class="h2">Monitor Principal</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary">Share</button>
-            <button type="button" class="btn btn-sm btn-outline-secondary">Export</button>
+            <button type="button" class="btn btn-sm btn-outline-secondary" id="exportChart">Exportar</button>
           </div>
-          <button type="button" class="btn btn-sm btn-outline-secondary dropdown-toggle">
-            <i class="fa-solid fa-calendar"></i>
-            {{title2}}
-          </button>
+
+          <div class="dropdown">
+            <button type="button" class="btn btn-outline-success dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <i class="fa-solid fa-calendar"></i>
+               {{title2}}
+            </button>
+
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+            <a class="dropdown-item {{btnStatus.btn1}}" href="/app/monitor/w">Ultimos 7 Dias</a>
+            <a class="dropdown-item {{btnStatus.btn2}}" href="/app/monitor/m">Ultimos 12 Meses</a>
+            <a class="dropdown-item {{btnStatus.btn3}}" href="/app/monitor/h">Ultimas 24 Horas</a>
+            <a class="dropdown-item {{btnStatus.btn4}}" href="/app/monitor/mn">Ultimas 24 Horas Por Minuto</a>
+            </div> 
+
+          </div>
+          
           <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.reload();">
             <i class="fa-solid fa-arrows-rotate"></i>
             Actualizar
@@ -97,7 +109,7 @@
 
       <canvas class="my-4 w-100" id="myChart" width="900" height="380"></canvas>
 
-      <h2>Datos Promedio: </h2>
+      <h2>Datos: </h2>
       
       <div class="table-responsive">
         <table class="table table-striped table-sm">
@@ -239,10 +251,18 @@
     }
   },
 };
-
-
-
   let chart = new Chart(ctx, config);
+  let btnDownload = document.getElementById("exportChart");
+  btnDownload.addEventListener("click", function () {
+    const dataURI = chart.toBase64Image();
+    
+    const a = document.createElement('a');
+    a.href = dataURI;
+    a.download = 'grafico.png';
 
+    // Trigger the download    
+    a.click();
+
+  });
 
 </script>
