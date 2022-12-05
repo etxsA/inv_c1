@@ -1,6 +1,7 @@
 import { Router } from "express";
-import { postSignUp, signIn, signUp } from "../controllers/app.auth.controller.js";
+import { logout, postSignIn, postSignUp, signIn, signUp } from "../controllers/app.auth.controller.js";
 import { index, monitor } from "../controllers/app.controller.js";
+import { isLoggedIn, isNotLoggedIn } from "../libs/auth.js";
 
 const router = Router();
 
@@ -8,11 +9,15 @@ const router = Router();
 router.get('/', index);
 
 // Auth Routes 
-router.get('/signup', signUp);
-router.post('/signup', postSignUp);
+router.get('/logout', isLoggedIn, logout);
 
-router.get('/signin', signIn);
-router.get('/monitor/:action', monitor);
+router.get('/signup', isNotLoggedIn, signUp);
+router.post('/signup', isNotLoggedIn, postSignUp);
+
+router.get('/signin', isNotLoggedIn, signIn);
+router.post('/signin', isNotLoggedIn, postSignIn);
+
+router.get('/monitor/:action', isLoggedIn, monitor);
 
 
 
