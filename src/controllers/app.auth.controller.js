@@ -1,3 +1,5 @@
+import passport from "passport";
+
 // "/signin"
 export const signIn = (req, res) => {
     res.render('auth/signin');
@@ -7,3 +9,10 @@ export const signIn = (req, res) => {
 export const signUp = (req, res) => {
     res.render('auth/signup');
 };
+
+export const postSignUp = passport.authenticate('local.signup', {
+    successRedirect: '/app/monitor/w',
+    failureRedirect: '/app/signup',
+    failureFlash: true,
+});
+

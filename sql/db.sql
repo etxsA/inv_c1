@@ -7,7 +7,7 @@ USE invernadero_web;
 CREATE TABLE IF NOT EXISTS users (
     id INT PRIMARY KEY AUTO_INCREMENT,
     username VARCHAR(20) NOT NULL,
-    password VARCHAR(32) NOT NULL,
+    password VARCHAR(100) NOT NULL,
     fullname VARCHAR(60) NOT NULL,
     email VARCHAR(50) UNIQUE NOT NULL
 );
@@ -29,10 +29,65 @@ INSERT INTO users VALUES
     (1, "Jesus", "1234", "JESUS OINE", "at@at.com");
 
 INSERT INTO invs_data VALUES  
-    (1, 2, 3, 4, 5, "inv1", 1, DEFAULT),
-    (2, 7.4, 3.5, 2, 3.5, "inv1", 1, DEFAULT),
-    (3, 8.4, 2.5, 32, 2.5, "inv1", 1, DEFAULT),
-    (4, 9.4, 1.5, 24, 1.5, "inv1", 1, DEFAULT);
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 30 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 29 DAY),
+    (DEFAULT, 6, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 28 DAY),
+    (DEFAULT, 5, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 26 DAY),
+    (DEFAULT, 7, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 25 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 24 DAY),
+    (DEFAULT, 9, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 23 DAY),
+    (DEFAULT, 3, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 22 DAY),
+    (DEFAULT, 1, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 21 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 20 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 19 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 18 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 17 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 16 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 15 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 14 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 13 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 12 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 11 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 10 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 9 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 8 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 7 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 8 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 6 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 5 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 4 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 3 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 2 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 1 DAY),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 1 MONTH),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 2 MONTH),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 3 MONTH),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 4 MONTH),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 5 MONTH),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 6 MONTH),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 7 MONTH),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 8 MONTH),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 9 MONTH),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 1 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 5 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 10 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 30 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 40 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 60 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 70 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 100 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 150 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 180 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 200 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 310 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 324 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 777 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 560 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 440 MINUTE),
+    (DEFAULT, 2, 3, 4, 5, "inv1", 1, NOW() - INTERVAL 900 MINUTE);
+
+
+
 
 
 -- Comandos Utiles

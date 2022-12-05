@@ -18,26 +18,26 @@ export const monitor = async (req, res) => {
 
         if ( action === 'w') {
             // Ultimos 7 Dias
-            [rows] = await pool.query('SELECT DAY(measured_at) as unit, CONCAT(DAY(MAX(measured_at)),"/",MONTH(MAX(measured_at))) as Date, AVG(temp) as temp, AVG(hum) as hum, AVG(lum) as lum, AVG(pH) as pH, ANY_VALUE(inv) as inv, MAX(measured_at) as measured_at FROM invs_data WHERE user_id = ? AND inv = ? AND measured_at >= NOW() - INTERVAL 7 DAY GROUP BY unit;', [1, 'inv1']);
+            [rows] = await pool.query('SELECT DAY(measured_at) as unit, CONCAT(DAY(MAX(measured_at)),"/",MONTH(MAX(measured_at))) as Date, AVG(temp) as temp, AVG(hum) as hum, AVG(lum) as lum, AVG(pH) as pH, ANY_VALUE(inv) as inv, MAX(measured_at) as measured_at FROM invs_data WHERE user_id = ? AND inv = ? AND measured_at >= NOW() - INTERVAL 7 DAY GROUP BY unit ORDER BY measured_at ASC;', [1, 'inv1']);
             title = 'Dia';
             title2 = 'Ultimos 7 dias';
             btnStatus.btn1 = 'active';
 
         } else if (action === 'm') {
             // Ultimos 12 meses
-            [rows] = await pool.query('SELECT MONTH(measured_at) as unit, CONCAT(MONTH(MAX(measured_at)),"/",YEAR(MAX(measured_at))) as Date, AVG(temp) as temp, AVG(hum) as hum, AVG(lum) as lum, AVG(pH) as pH, ANY_VALUE(inv) as inv, MAX(measured_at) as measured_at FROM invs_data WHERE user_id = ? AND inv = ? AND measured_at >= NOW() - INTERVAL 12 MONTH GROUP BY unit;', [1, 'inv1']);
+            [rows] = await pool.query('SELECT MONTH(measured_at) as unit, CONCAT(MONTH(MAX(measured_at)),"/",YEAR(MAX(measured_at))) as Date, AVG(temp) as temp, AVG(hum) as hum, AVG(lum) as lum, AVG(pH) as pH, ANY_VALUE(inv) as inv, MAX(measured_at) as measured_at FROM invs_data WHERE user_id = ? AND inv = ? AND measured_at >= NOW() - INTERVAL 12 MONTH GROUP BY unit ORDER BY measured_at ASC;', [1, 'inv1']);
             title = 'Mes';
             title2 = 'Ultimos 12 meses';
             btnStatus.btn2 = 'active';
         } else if ( action == 'h') {
             // Ultimas 24 horas por Horas
-            [rows] = await pool.query('SELECT HOUR(measured_at) as hour, TIME(MAX(measured_at)) as Date, AVG(temp) as temp, AVG(hum) as hum, AVG(lum) as lum, AVG(pH) as pH, ANY_VALUE(inv) as inv, MAX(measured_at) as measured_at FROM invs_data WHERE user_id =? AND inv = ? AND measured_at >= NOW() - INTERVAL 24 HOUR GROUP BY hour;', [1, 'inv1']);
+            [rows] = await pool.query('SELECT HOUR(measured_at) as hour, TIME(MAX(measured_at)) as Date, AVG(temp) as temp, AVG(hum) as hum, AVG(lum) as lum, AVG(pH) as pH, ANY_VALUE(inv) as inv, MAX(measured_at) as measured_at FROM invs_data WHERE user_id =? AND inv = ? AND measured_at >= NOW() - INTERVAL 24 HOUR GROUP BY hour ORDER BY measured_at ASC', [1, 'inv1']);
             title = 'Ultima Medida';
             title2 = 'Ultimas 24 horas';
             btnStatus.btn3 = 'active';
         } else if (action == 'mn') {
             // Ultimas 24 horas por minutos
-            [rows] = await pool.query('SELECT TIME(measured_at) as Date, temp, hum, lum, pH, ANY_VALUE(inv) as inv, measured_at FROM invs_data WHERE user_id =? AND inv = ? AND measured_at >= NOW() - INTERVAL 24 HOUR;', [1, 'inv1']);
+            [rows] = await pool.query('SELECT TIME(measured_at) as Date, temp, hum, lum, pH, ANY_VALUE(inv) as inv, measured_at FROM invs_data WHERE user_id =? AND inv = ? AND measured_at >= NOW() - INTERVAL 24 HOUR ORDER BY measured_at ASC;', [1, 'inv1']);
             title = 'Ultima Medida';
             title2 = 'Ultimas 24 horas Por Minuto';
             btnStatus.btn4 = 'active';
@@ -65,8 +65,6 @@ export const monitor = async (req, res) => {
 
         // Rendering Page
         res.render('monitor', renderParams);
-        console.log(renderParams);
-
     } catch (err) {
         return res.status(500).json({message: "Somenthing went wrong", error: err.message});
     }
