@@ -83,7 +83,7 @@ export const postInvernaderos = async (req, res) => {
             lum,
             pH,
             inv,
-            user_id: req.user[0].id
+            user_id: 1 //req.user[0].id
         }
 
         const [result] = await pool.query('INSERT INTO invs_data set ?' , [newData]);
