@@ -1,6 +1,6 @@
 import { Router } from "express";
 import { logout, postSignIn, postSignUp, signIn, signUp } from "../controllers/app.auth.controller.js";
-import { index, monitor } from "../controllers/app.controller.js";
+import { index, monitor, profile } from "../controllers/app.controller.js";
 import { isLoggedIn, isNotLoggedIn } from "../libs/auth.js";
 
 const router = Router();
@@ -16,6 +16,8 @@ router.post('/signup', isNotLoggedIn, postSignUp);
 
 router.get('/signin', isNotLoggedIn, signIn);
 router.post('/signin', isNotLoggedIn, postSignIn);
+
+router.get("/profile", profile);
 
 router.get('/monitor/:action', isLoggedIn, monitor);
 

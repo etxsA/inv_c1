@@ -72,7 +72,9 @@ export const postInvernaderos = async (req, res) => {
         const {
             temp,
             hum,
+            ldr,
             lum,
+            shum,
             pH,
             inv,
         } = req.body;
@@ -80,7 +82,9 @@ export const postInvernaderos = async (req, res) => {
         const newData = {
             temp,
             hum,
+            ldr,
             lum,
+            shum,
             pH,
             inv,
             user_id: 1 //req.user[0].id

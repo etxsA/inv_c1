@@ -1,83 +1,6 @@
 <div class="container-fluid">
   <div class="row">
-    <nav id="sidebarMenu" class="col-md-3 col-lg-2 d-md-block bg-light sidebar collapse">
-      <div class="sidebar-sticky pt-3">
-        <ul class="nav flex-column">
-          <li class="nav-item">
-            <a class="nav-link active" href="#">
-              <span data-feather="home"></span>
-              Dashboard <span class="sr-only">(current)</span>
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file"></span>
-              Orders
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="shopping-cart"></span>
-              Products
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="users"></span>
-              Customers
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="bar-chart-2"></span>
-              Reports
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="layers"></span>
-              Integrations
-            </a>
-          </li>
-        </ul>
-
-        <h6 class="sidebar-heading d-flex justify-content-between align-items-center px-3 mt-4 mb-1 text-muted">
-          <span>Saved reports</span>
-          <a class="d-flex align-items-center text-muted" href="#" aria-label="Add a new report">
-            <span data-feather="plus-circle"></span>
-          </a>
-        </h6>
-        <ul class="nav flex-column mb-2">
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Current month
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Last quarter
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Social engagement
-            </a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" href="#">
-              <span data-feather="file-text"></span>
-              Year-end sale
-            </a>
-          </li>
-        </ul>
-      </div>
-    </nav>
-
-
-    <main role="main" class="col-md-9 ml-sm-auto col-lg-10 px-md-4">
+    <main role="main" class="mx-auto col-lg-10 px-md-4">
       <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
         <h1 class="h2">Monitor Principal</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
@@ -118,7 +41,9 @@
               <th>{{title}}</th>
               <th>ºC<i class="fa-solid fa-temperature-three-quarters"></i></th>
               <th>Hum<i class="fa-solid fa-droplet"></i></th>
+              <th>LDR</th>
               <th>Lum<i class="fa-solid fa-sun-plant-wilt"></i></th>
+              <th>Hum Suelo</th>
               <th>pH<i class="fa-solid fa-plant-wilt"></i></th>
               <th>Inv<i class="fa-solid fa-house-signal"></i></th>
               <th>Tiempo<i class="fa-solid fa-clock-rotate-left"></i></th>
@@ -130,7 +55,9 @@
                 <td>{{Date}}</td>
                 <td>{{temp}}</td>
                 <td>{{hum}}</td>
+                <td>{{ldr}}</td>
                 <td>{{lum}}</td>
+                <td>{{shum}}</td>
                 <td>{{pH}}</td>
                 <td>{{inv}}</td>
                 <td>{{timeago measured_at}}</td>
@@ -175,11 +102,25 @@
         yAxisID: 'y1',
       },
       {
+        label: 'LDR',
+        data: [{{ldr}}],
+        borderColor: 'rgb(75,0,130)',
+        backgroundColor: 'rgba(75, 0, 130, 0.5)',
+        yAxisID: 'y1',
+      },
+      {
         label: 'Lum',
         data: [{{lum}}],
         borderColor: 'rgb(255, 234, 0)',
         backgroundColor: 'rgba(255, 234, 0, 0.5)',
         yAxisID: 'y2',
+      },
+      {
+        label: 'Hum Suelo',
+        data: [{{shum}}],
+        borderColor: 'rgb(238,130,238)',
+        backgroundColor: 'rgba(238, 130, 238, 0.5)',
+        yAxisID: 'y1',
       },
       {
         label: 'pH',
@@ -247,7 +188,28 @@
         grid: {
           drawOnChartArea: false 
         }
+      },
+      y4: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+
+        // grid line settings
+        grid: {
+          drawOnChartArea: false 
+        }
+      },
+      y5: {
+        type: 'linear',
+        display: true,
+        position: 'left',
+
+        // grid line settings
+        grid: {
+          drawOnChartArea: false 
+        }
       }
+      
     }
   },
 };
