@@ -1,6 +1,7 @@
 import { query } from 'express';
 import { pool } from '../db.js';
 
+
 // "/"
 export const index = (req, res) => {
     res.render('index');
@@ -15,10 +16,35 @@ export const profile = async (req, res) => {
 // "/monitor"
 export const monitor = async (req, res) => {
     try {
+        // Rendering Page
+        const params = await renderParams(req);
+        res.render('monitor', params);
+    } catch (err) {
+        return res.status(500).json({message: "Somenthing went wrong", error: err.message});
+    }
 
+    
+};
+
+// "/monitor/indv/"
+export const monitorIndv =  async (req, res) => {
+    try {
+        const params = await renderParams(req);
+        res.render('monitorIndv', params);
+    } catch (err) { 
+        return res.status(500).json({message: "Somenthing went wrong", error: err.message});
+
+    }
+};
+
+
+
+
+
+// Data Query Function
+const renderParams= async (req) => {
         const id = req.user[0].id;
         const inv = 'inv1';
-        console.log(id, inv)
 
         // Selecting chart by data
         const { action } = req.params;
@@ -79,15 +105,5 @@ export const monitor = async (req, res) => {
 
         const renderParams = {rows, title, title2, labels, temp, hum, ldr, lum, shum, pH, btnStatus};
 
-        // Rendering Page
-        res.render('monitor', renderParams);
-    } catch (err) {
-        return res.status(500).json({message: "Somenthing went wrong", error: err.message});
-    }
-
-    
-};
-
-export const monitorIndv =  async (req, res) => {
-
+        return renderParams;
 };
