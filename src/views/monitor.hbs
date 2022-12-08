@@ -5,7 +5,7 @@
         <h1 class="h2">Monitor Principal</h1>
         <div class="btn-toolbar mb-2 mb-md-0">
           <div class="btn-group mr-2">
-            <button type="button" class="btn btn-sm btn-outline-secondary" id="exportChart">Exportar</button>
+            <button type="button" class="btn btn-sm btn-outline-success" id="exportChart">Exportar</button>
           </div>
 
           <div class="dropdown">
@@ -23,7 +23,7 @@
 
           </div>
           
-          <button type="button" class="btn btn-sm btn-outline-secondary" onclick="window.location.reload();">
+          <button type="button" class="btn btn-sm btn-outline-success" onclick="window.location.reload();">
             <i class="fa-solid fa-arrows-rotate"></i>
             Actualizar
           </button>
@@ -106,28 +106,28 @@
         data: [{{ldr}}],
         borderColor: 'rgb(75,0,130)',
         backgroundColor: 'rgba(75, 0, 130, 0.5)',
-        yAxisID: 'y1',
+        yAxisID: 'y2',
       },
       {
         label: 'Lum',
         data: [{{lum}}],
         borderColor: 'rgb(255, 234, 0)',
         backgroundColor: 'rgba(255, 234, 0, 0.5)',
-        yAxisID: 'y2',
+        yAxisID: 'y3',
       },
       {
         label: 'Hum Suelo',
         data: [{{shum}}],
         borderColor: 'rgb(238,130,238)',
         backgroundColor: 'rgba(238, 130, 238, 0.5)',
-        yAxisID: 'y1',
+        yAxisID: 'y4',
       },
       {
         label: 'pH',
         data: [{{pH}}],
         borderColor: 'rgb(173, 255, 47)',
         backgroundColor: 'rgba(173, 255, 47, 0.5)',
-        yAxisID: 'y2',
+        yAxisID: 'y5',
       }
     ]
   };
